@@ -36,6 +36,27 @@ sync-wt.sh                 diff / pull / push the Windows Terminal config
 | `home/.config/nvim/init.lua` | Neovim: space leader, WSL clipboard bridge to the Windows clipboard via `clip.exe`/`powershell.exe`, and `<leader>y` / `<leader>p` to yank/replace the whole buffer against the Windows clipboard. |
 | `windows-terminal/settings.json` | Windows Terminal: One Half Dark scheme, `copyOnSelect`, custom keybindings (duplicate pane, swap pane, send input, `ctrl+c` copy), and profile list. |
 
+## Prerequisites
+
+`install.sh` **only symlinks config files** — it does not install any
+software. Install the tools these configs are for first:
+
+```bash
+sudo apt update
+sudo apt install -y neovim tmux wslu     # wslu provides wslview
+# nvm (Node version manager), sourced by .bashrc:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+
+Notes:
+- Ubuntu's apt `neovim` can lag the latest release. If you want a newer
+  Neovim (this setup was built against 0.12.x), install it from the
+  [official releases](https://github.com/neovim/neovim/releases) or the
+  `neovim-ppa/unstable` PPA instead of apt.
+- The configs degrade gracefully if a tool is missing (e.g. `.bashrc`
+  only loads `nvm` if it's present), so a partial install won't break
+  your shell.
+
 ## Install (fresh machine)
 
 ```bash
