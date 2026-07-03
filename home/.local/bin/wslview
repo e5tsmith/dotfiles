@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+target="$1"
+[ -e "$target" ] && target="$(wslpath -w "$target")"
+explorer.exe "$target"
+exit 0

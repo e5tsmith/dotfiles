@@ -96,13 +96,13 @@ review with `git diff` → commit.
 
 ## Notes
 
-- **`~/.local/bin/wslview`** was requested but does not exist on this
-  machine (no `wslview` on `PATH`, and the `wslu` package isn't
-  installed), so it is not tracked. `wslview` normally ships with
-  [`wslu`](https://github.com/wslutilities/wslu) at `/usr/bin/wslview`;
-  install that package rather than vendoring the script here. If you do
-  end up with a personal `~/.local/bin/wslview`, drop it at
-  `home/.local/bin/wslview` and `install.sh` will pick it up
-  automatically.
+- **`~/.local/bin/wslview`** is a small personal shim that opens a path
+  or URL on the Windows side via `explorer.exe` (running a WSL path
+  through `wslpath -w` first). It's tracked at `home/.local/bin/wslview`,
+  so `install.sh` symlinks it into place like any other dotfile. It
+  stands in for the `wslview` that normally ships with
+  [`wslu`](https://github.com/wslutilities/wslu) at `/usr/bin/wslview` —
+  if you install the `wslu` package, that one takes precedence on `PATH`
+  and this shim becomes redundant.
 - The tracked Windows Terminal `settings.json` contains only profile
   GUIDs and color schemes — no secrets.
