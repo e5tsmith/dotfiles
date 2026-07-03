@@ -1,0 +1,12 @@
+# Backups created by install.sh / sync-wt.sh
+*.bak
+*.bak.*
+
+# Editor / OS cruft
+*.swp
+*~
+.DS_Store
+
+# Windows Terminal writes state next to settings.json; never track these
+windows-terminal/state.json
+windows-terminal/*.lock
