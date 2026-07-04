@@ -56,7 +56,8 @@
             {
                 "colorScheme": "One Half Dark Dimmed"
             },
-            "colorScheme": "One Half Dark"
+            "colorScheme": "One Half Dark",
+            "font": { "face": "Cascadia Code NF", "cellHeight": "1.5" }
         },
         "list": 
         [
