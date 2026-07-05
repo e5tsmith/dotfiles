@@ -7,6 +7,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
+vim.opt.cursorline = true
 
 -- WSL clipboard: wire the + register to the *Windows* clipboard
 vim.g.clipboard = {
@@ -51,11 +52,22 @@ require('lazy').setup({
       md_hl()
       vim.api.nvim_create_autocmd('ColorScheme', { callback = md_hl })
     end },
+  { 'christoomey/vim-tmux-navigator',
+    cmd = { 'TmuxNavigateLeft', 'TmuxNavigateDown', 'TmuxNavigateUp', 'TmuxNavigateRight' },
+    keys = {
+      { '<C-h>', '<cmd>TmuxNavigateLeft<cr>',  desc = 'Window left' },
+      { '<C-j>', '<cmd>TmuxNavigateDown<cr>',  desc = 'Window down' },
+      { '<C-k>', '<cmd>TmuxNavigateUp<cr>',    desc = 'Window up' },
+      { '<C-l>', '<cmd>TmuxNavigateRight<cr>', desc = 'Window right' },
+    } },
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function() require('nvim-tree').setup() end },
+  { 'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {} },
   -- Markdown: render in-buffer (headings, bullets, tables, code blocks)
   { 'MeanderingProgrammer/render-markdown.nvim',
     ft = 'markdown',
@@ -69,6 +81,18 @@ require('lazy').setup({
       vim.g.mkdp_echo_preview_url = 1
     end },
 })
+
+-- Bold window separators (survive colorscheme reloads)
+local function win_hl()
+  vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#5c6370', bold = true })
+end
+win_hl()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = win_hl })
+
+-- <leader>z : zoom the current window by toggling it into its own tab
+vim.keymap.set('n', '<leader>z', function()
+  if vim.fn.tabpagenr('$') > 1 then vim.cmd('tabclose') else vim.cmd('tab split') end
+end, { desc = 'Zoom window (toggle, via tab)' })
 
 -- Telescope: fuzzy find + project-wide grep
 local builtin = require('telescope.builtin')
