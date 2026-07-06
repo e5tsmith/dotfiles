@@ -149,3 +149,6 @@ bind -m vi-command -x '"v": edit_command_line'
 bind -x '"\C-x\C-e": edit_command_line'
 
 
+
+# Local, non-git secrets (Octopus API key, etc.) — see ~/.config/e5/secrets.env (chmod 600)
+[ -f "$HOME/.config/e5/secrets.env" ] && . "$HOME/.config/e5/secrets.env"
