@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# dev - attach to the 2x2 agent-farm session, building it if needed
+session=dev
+dir=~/github
+
+if ! tmux has-session -t "$session" 2>/dev/null; then
+  tmux new-session  -d -s "$session" -c "$dir"
+  tmux split-window -t "$session" -c "$dir"
+  tmux split-window -t "$session" -c "$dir"
+  tmux split-window -t "$session" -c "$dir"
+  tmux select-layout -t "$session" tiled
+  tmux select-pane  -t "$session:.{top-left}"
+fi
+
+if [ -n "$TMUX" ]; then
+  exec tmux switch-client -t "$session"
+else
+  exec tmux attach -t "$session"
+fi
