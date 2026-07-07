@@ -118,7 +118,6 @@ export NVM_DIR="$HOME/.nvm"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-set -o vi
 
 
 # ~/.bashrc — after any `set -o vi` line
@@ -133,8 +132,6 @@ edit_command_line() {
     rm -f "$tmpf"
 }
 
-# vi normal mode: make `v` edit-without-executing
-bind -m vi-command -x '"v": edit_command_line'
 # emacs mode: same for Ctrl+X Ctrl+E
 bind -x '"\C-x\C-e": edit_command_line'
 
