@@ -39,6 +39,10 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="$HOME/.local/bin:$PATH"
 
+# snap apps (e.g. neovim): zsh login shells don't source /etc/profile.d, so
+# /snap/bin never reaches PATH the way it does in bash — add it ourselves.
+[[ -d /snap/bin ]] && path+=(/snap/bin)
+
 # nvm (node / npm / npx / claude) — mirrors ~/.bashrc; no bash_completion in zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
