@@ -38,10 +38,6 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
             "id": "User.swapPane.2A0DA8E0",
             "keys": "alt+shift+left"
         }

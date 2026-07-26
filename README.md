@@ -34,7 +34,7 @@ sync-wt.sh                 diff / pull / push the Windows Terminal config
 | `home/.bash_aliases` | Aliases `vi`/`vim` → `nvim`. |
 | `home/.inputrc` | readline: shows vi mode in the prompt and switches the cursor shape between insert/command mode; short `keyseq-timeout`. |
 | `home/.config/nvim/init.lua` | Neovim: space leader, WSL clipboard bridge to the Windows clipboard via `clip.exe`/`powershell.exe`, and `<leader>y` / `<leader>p` to yank/replace the whole buffer against the Windows clipboard. |
-| `windows-terminal/settings.json` | Windows Terminal: One Half Dark scheme, `copyOnSelect`, custom keybindings (duplicate pane, swap pane, send input, `ctrl+c` copy — falls through to `SIGINT` when nothing is selected — and `ctrl+v` paste), and profile list. |
+| `windows-terminal/settings.json` | Windows Terminal: One Half Dark scheme, `copyOnSelect`, custom keybindings (duplicate pane, swap pane, send input, `ctrl+c` copy — falls through to `SIGINT` when nothing is selected). `ctrl+v` is deliberately **left unbound** so it passes through to the app (e.g. Copilot CLI, which pastes clipboard text *and* images); paste in the raw shell with `ctrl+shift+v` or right-click. Plus the profile list. |
 
 ## Prerequisites
 
