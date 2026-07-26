@@ -29,12 +29,12 @@ sync-wt.sh                 diff / pull / push the Windows Terminal config
 
 | File | Purpose |
 | --- | --- |
-| `home/.tmux.conf` | tmux: `C-a` prefix (screen-style), vi copy-mode with `v`/`y`/`C-v` rectangle select, system-clipboard integration, `\|`/`-` splits and new windows that inherit the current pane's path, true-color + cursor-shape terminal overrides. |
+| `home/.tmux.conf` | tmux: `C-a` prefix (screen-style), vi copy-mode with `v`/`y`/`C-v` rectangle select, `mouse on` with drag-to-copy, and a Windows-clipboard bridge (mouse-drag / `y` / `Enter` pipe the selection to `clip.exe`; `prefix`+`y` copies the whole pane history), `\|`/`-` splits and new windows that inherit the current pane's path, true-color + cursor-shape terminal overrides. |
 | `home/.bashrc` | Ubuntu default bash config plus: large timestamped history, `nvm` loading, `nvim` as `$VISUAL`/`$EDITOR`, `set -o vi`, and an `edit_command_line` helper bound to `v` (vi-command mode) and `C-x C-e` to edit the current command line in the editor. |
 | `home/.bash_aliases` | Aliases `vi`/`vim` → `nvim`. |
 | `home/.inputrc` | readline: shows vi mode in the prompt and switches the cursor shape between insert/command mode; short `keyseq-timeout`. |
 | `home/.config/nvim/init.lua` | Neovim: space leader, WSL clipboard bridge to the Windows clipboard via `clip.exe`/`powershell.exe`, and `<leader>y` / `<leader>p` to yank/replace the whole buffer against the Windows clipboard. |
-| `windows-terminal/settings.json` | Windows Terminal: One Half Dark scheme, `copyOnSelect`, custom keybindings (duplicate pane, swap pane, send input, `ctrl+c` copy), and profile list. |
+| `windows-terminal/settings.json` | Windows Terminal: One Half Dark scheme, `copyOnSelect`, custom keybindings (duplicate pane, swap pane, send input, `ctrl+c` copy — falls through to `SIGINT` when nothing is selected — and `ctrl+v` paste), and profile list. |
 
 ## Prerequisites
 
